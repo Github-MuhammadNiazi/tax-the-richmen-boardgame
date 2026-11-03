@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace the relative paths with the absolute production origin at deployment time. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc></url>
+  <url><loc>/how-to-play</loc></url>
+  <url><loc>/rulebook</loc></url>
+  <url><loc>/map-generator</loc></url>
+  <url><loc>/components</loc></url>
+  <url><loc>/print-export</loc></url>
+</urlset>

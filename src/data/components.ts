@@ -1,0 +1,222 @@
+import type { CostId } from './costs';
+
+export interface ComponentDef {
+  id: string;
+  name: string;
+  category: 'Board' | 'Infrastructure' | 'Buildings' | 'Oil' | 'Steel' | 'Tokens' | 'Figures';
+  image: string;
+  alt: string;
+  description: string;
+  purpose: string;
+  costs?: CostId[];
+  costNote?: string;
+  placement: string;
+  rule: string;
+  /** Proposed prototype dimensions only; no manufacturing specification has been approved. */
+  prototype?: string;
+}
+
+const img = (name: string) => `/assets/components/comp-${name}.webp`;
+export const thumb = (image: string) => image.replace(/(comp-[a-z-]+)\.webp$/, '$1-sm.webp');
+
+export const COMPONENTS: ComponentDef[] = [
+  {
+    id: 'terrain-tiles',
+    name: 'Terrain Tiles',
+    category: 'Board',
+    image: '/assets/terrain/terrain-city-1.webp',
+    alt: 'Top-down printed artwork of an industrial metropolis hex tile',
+    description:
+      'Thirty printed top-down hexes in eight terrain types, with thirty distinct artworks and a shared engraved back for the eight concealed Mine/Mountain tiles.',
+    purpose: 'Form the board; producing hexes generate resources when their number is rolled.',
+    placement: 'Seven columns of 3, 4, 5, 6, 5, 4, 3 hexes, flat-top orientation.',
+    rule: 'board',
+    prototype: 'Prototype proposal: 76 mm flat-to-flat hexes.',
+  },
+  {
+    id: 'road',
+    name: 'Road',
+    category: 'Infrastructure',
+    image: img('road'),
+    alt: 'Four sculpted cobblestone road pieces with red, blue, green and gold ownership stripes',
+    description: 'Weathered sculpted cobblestone segment, low enough to keep the board readable, with a player-coloured ownership stripe.',
+    purpose: 'Connects the centres of two adjacent hexes and builds the City-to-Port network.',
+    costs: ['road', 'roadMountainSurcharge'],
+    costNote: 'Mountain surcharge applies when entering a Mountain.',
+    placement: 'Across the shared edge, centre to centre. One Road per adjacent pair.',
+    rule: 'road-building',
+  },
+  {
+    id: 'pipeline',
+    name: 'Pipeline',
+    category: 'Infrastructure',
+    image: img('pipeline'),
+    alt: 'Three riveted gunmetal pipeline segments with brass flanges, valves and coloured rings',
+    description: 'Riveted gunmetal tube with brass joints and valve wheel, ringed in the owner\u2019s colour. Round and raised — never mistaken for a flat Road.',
+    purpose: 'Links two owned hexes through an Oil Rig for permanent Fuel production.',
+    costs: ['pipeline'],
+    placement: 'Through an Oil Rig between two different hexes owned by the same player.',
+    rule: 'pipeline-building',
+  },
+  {
+    id: 'ownership-marker',
+    name: 'Ownership Marker',
+    category: 'Tokens',
+    image: img('ownership-marker'),
+    alt: 'Four antique brass flag markers with red circle, blue square, green triangle and gold diamond flags',
+    description: 'Antique brass base and flagpole with a pennant in the player\u2019s colour and symbol — circle, square, triangle or diamond.',
+    purpose: 'Marks permanent ownership of a City, Village, Mine, Mountain or Port.',
+    costs: ['investCity', 'investVillage', 'investMine', 'investMountain'],
+    placement: 'On the owned hex, in the marker safe area.',
+    rule: 'investment',
+  },
+  {
+    id: 'office',
+    name: 'Office',
+    category: 'Buildings',
+    image: img('office'),
+    alt: 'Four Art Deco office building miniatures with red, blue, green and gold stepped roofs',
+    description: 'A small sculpted 1930s commercial building with a stepped roof in the player\u2019s colour.',
+    purpose: 'Allows expansion through a rival\u2019s property and a share of its overflow production.',
+    costs: ['office'],
+    placement: 'On a City, Village, Mine or Mountain. Up to two per hex, one per player.',
+    rule: 'offices',
+  },
+  {
+    id: 'oil-lease',
+    name: 'Oil Rig Lease',
+    category: 'Oil',
+    image: img('lease-bid'),
+    alt: 'Brass hexagonal license token embossed with an oil derrick beside a copper bid marker with a gavel',
+    description: 'A brass license token embossed with a derrick, issued to the current lessee.',
+    purpose: 'Shows who holds the current one-cycle Fuel rights on a Rig.',
+    costs: ['oilLease'],
+    placement: 'On the leased Oil Rig; returned when the lease expires.',
+    rule: 'standard-lease',
+  },
+  {
+    id: 'bid-marker',
+    name: 'Bid Marker',
+    category: 'Oil',
+    image: img('lease-bid'),
+    alt: 'Copper auction bid marker with gavel relief beside a brass lease token',
+    description: 'A copper auction disc with a gavel relief. The current bid amount is displayed with it.',
+    purpose: 'Records the leading advance bid for the next lease on an occupied Rig.',
+    costs: ['oilBidMinimum'],
+    costNote: 'Each raise must exceed the leading bid by at least 1 Money.',
+    placement: 'Beside the Oil Rig being bid on. One pending bid per player.',
+    rule: 'advance-bidding',
+  },
+  {
+    id: 'markets',
+    name: 'Port Markets',
+    category: 'Buildings',
+    image: img('market-wood'),
+    alt: 'Four Port Market miniatures: sawmill, brick foundry, fuel depot and stone quarry workshop',
+    description: 'Four distinct sculpted structures — Sawmill (Wood), Foundry (Metal), Fuel Depot (Fuel) and Quarry Workshop (Stone).',
+    purpose: 'Unlock one 2:1 specialized exchange per turn and the Steel purchase.',
+    costs: ['marketWood', 'marketMetal', 'marketFuel', 'marketStone'],
+    placement: 'On the owner\u2019s Port.',
+    rule: 'market-construction',
+  },
+  {
+    id: 'steel-cards',
+    name: 'Steel Cards',
+    category: 'Steel',
+    image: img('steel-cards'),
+    alt: 'Fanned vintage parchment steel-shipping certificate cards with engraved steel mill artwork and an ornate green back',
+    description: 'Twenty vintage steel-shipping certificates on aged parchment with engraved industrial artwork. Values 1–5, identical backs.',
+    purpose: 'Drawn by activated Ports; converted into Steel Coins and discarded.',
+    placement: 'Shared shuffled draw deck beside the board, with a discard pile.',
+    rule: 'steel-deck',
+    prototype: 'Prototype proposal: standard 63 × 88 mm card format.',
+  },
+  {
+    id: 'steel-coins',
+    name: 'Steel Coins',
+    category: 'Steel',
+    image: img('steel-coins'),
+    alt: 'Stack of silver-grey embossed industrial steel coins with girder and cog motifs',
+    description: 'Silver-grey embossed industrial coins with girder and cog relief. One coin equals one Steel.',
+    purpose: 'Your Steel holdings. Ten wins the game.',
+    costs: ['steelPurchase'],
+    costNote: 'Purchased through a constructed Port Market after activation.',
+    placement: 'Kept privately concealed by each player.',
+    rule: 'steel-purchase',
+  },
+  {
+    id: 'steel-vault',
+    name: 'Steel Vault',
+    category: 'Steel',
+    image: img('steel-vault'),
+    alt: 'Riveted gunmetal miniature safe with brass combination dial and handle wheel',
+    description: 'A heavy riveted steel safe with brass combination dial and wheel handle.',
+    purpose: 'Protects against one Steel-tax event, then expires.',
+    costs: ['steelVault'],
+    placement: 'In front of the owning player while active.',
+    rule: 'steel-vault',
+  },
+  {
+    id: 'resource-tokens',
+    name: 'Resource Tokens',
+    category: 'Tokens',
+    image: img('resource-tokens'),
+    alt: 'Brass coin, timber bundle, iron ingot, oil barrel and granite block resource tokens',
+    description: 'Money (brass coin), Wood (timber bundle), Metal (iron ingot), Fuel (oil barrel) and Stone (granite block).',
+    purpose: 'The five ordinary resources. Individual holdings are concealed; totals are public.',
+    placement: 'Bank supply beside the board; player holdings kept behind a screen or in hand.',
+    rule: 'production',
+  },
+  {
+    id: 'upgrade',
+    name: 'Upgrade Gear',
+    category: 'Tokens',
+    image: img('dice-upgrade'),
+    alt: 'Bronze industrial gear upgrade marker beside two ivory dice',
+    description: 'A small cast industrial gear.',
+    purpose: 'Marks the one property whose output a player has doubled.',
+    costs: ['upgrade'],
+    placement: 'On the upgraded owned property.',
+    rule: 'upgrade',
+  },
+  {
+    id: 'dice',
+    name: 'Dice',
+    category: 'Tokens',
+    image: img('dice-upgrade'),
+    alt: 'Two ivory six-sided dice with dark pips',
+    description: 'Two ivory-coloured six-sided dice.',
+    purpose: 'Rolled each turn for production; a 7 summons the Tax Inspector.',
+    placement: 'Shared.',
+    rule: 'turn-sequence',
+  },
+  {
+    id: 'tax-inspector',
+    name: 'Tax Inspector',
+    category: 'Figures',
+    image: img('tax-inspector'),
+    alt: '1930s tax inspector miniature in pinstripe suit and bowler hat with briefcase and ledger on a red base',
+    description: 'A 1930s government official in a dark pinstripe suit and bowler hat, carrying a leather briefcase and tax ledger, on a red inspection base.',
+    purpose: 'Relocated on every 7. Freezes development and suspends Oil or Steel production on its hex.',
+    placement: 'On any revealed land hex; never Water, the Tax Office or an unrevealed tile.',
+    rule: 'seven-steps',
+  },
+  {
+    id: 'winning-ship',
+    name: 'Winning Ship',
+    category: 'Figures',
+    image: img('winning-ship'),
+    alt: '1930s dark-hulled cargo steamship miniature with brass fittings and a red flag',
+    description: 'A 1930s industrial cargo steamship — dark hull, brass fittings, and the winner\u2019s colour at the mast.',
+    purpose: 'Launched at the winner\u2019s Port the moment they hold 10 Steel.',
+    placement: 'At the winning player\u2019s Port.',
+    rule: 'victory',
+  },
+];
+
+export const MARKET_IMAGES = [
+  { resource: 'wood', name: 'Sawmill', image: img('market-wood'), alt: 'Timber-frame sawmill miniature with circular saw and plank stacks' },
+  { resource: 'metal', name: 'Foundry', image: img('market-metal'), alt: 'Brick foundry miniature with chimney and glowing furnace' },
+  { resource: 'fuel', name: 'Fuel Depot', image: img('market-fuel'), alt: 'Fuel depot miniature with riveted tanks, pump and barrels' },
+  { resource: 'stone', name: 'Quarry Workshop', image: img('market-stone'), alt: 'Stone quarry workshop miniature with stone saw and granite blocks' },
+] as const;
