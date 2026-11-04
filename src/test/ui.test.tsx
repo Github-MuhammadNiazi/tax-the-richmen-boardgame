@@ -41,6 +41,7 @@ describe('site navigation', () => {
       ['Map Generator', /every map tells/i],
       ['Components', /built to be held/i],
       ['Print & Export', /bring it to the table/i],
+      ['3D Printing', /print the pieces/i],
     ];
     for (const [link, heading] of routes) {
       await user.click(within(primary).getByRole('link', { name: link }));
@@ -201,6 +202,27 @@ describe('components page', () => {
   });
 });
 
+describe('3D printing library', () => {
+  it('filters parts, previews a filament and links real downloads', async () => {
+    const { user } = renderApp('/3d-printing');
+    expect(await screen.findByRole('heading', { level: 1, name: /print the pieces/i })).toBeInTheDocument();
+    await user.click(screen.getByRole('radio', { name: 'Standard 256 mm' }));
+    expect(screen.getByText(/256 × 256 mm/)).toBeInTheDocument();
+    await user.click(screen.getByRole('radio', { name: 'Copper' }));
+    expect(screen.getByText(/Previewing Copper/)).toBeInTheDocument();
+    const base = document.getElementById('hex_base') as HTMLElement;
+    expect(within(base).getByRole('link', { name: 'STL' })).toHaveAttribute('href', '/printables/models/hex_base.stl');
+    expect(within(base).getByRole('link', { name: '3MF' })).toHaveAttribute('href', '/printables/models/hex_base.3mf');
+    expect(screen.queryByRole('heading', { name: 'City relief topper' })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('checkbox'));
+    expect(screen.getByRole('heading', { name: 'City relief topper' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Building cost cards, duplex' })).toHaveAttribute('href', '/printables/cards/building-cost-cards-a4-duplex.pdf');
+    await user.click(screen.getByRole('radio', { name: 'Roads' }));
+    expect(screen.getByRole('heading', { name: 'Road segment' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Universal hex base' })).not.toBeInTheDocument();
+  });
+});
+
 describe('print & export hub', () => {
   it('lists the twelve printables with print and PDF actions', async () => {
     const { user } = renderApp('/print-export');
@@ -212,6 +234,7 @@ describe('print & export hub', () => {
       expect(within(card as HTMLElement).getByRole('button', { name: /PDF/ })).toBeInTheDocument();
     }
     expect(document.getElementById('rulebook-pdf')).not.toBeNull();
+    expect(screen.getByRole('link', { name: 'Building cost cards, duplex' })).toHaveAttribute('href', '/printables/cards/building-cost-cards-a4-duplex.pdf');
     await user.click(screen.getByRole('button', { name: 'Preview Quick-start guide' }));
     expect(await screen.findByRole('dialog', { name: 'Quick-start guide preview' })).toBeInTheDocument();
   });

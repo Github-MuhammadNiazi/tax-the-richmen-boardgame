@@ -7,6 +7,7 @@ const ROUTES = [
   { path: '/map-generator', h1: /every map tells/i },
   { path: '/components', h1: /built to be held/i },
   { path: '/print-export', h1: /bring it to the table/i },
+  { path: '/3d-printing', h1: /print the pieces/i },
 ];
 
 const WIDTHS = [375, 768, 1024, 1440, 1920];

@@ -1,7 +1,9 @@
 # Implementation Report
 
-Status as of 3 November 2026. All six routes are implemented and working. Only results that actually ran
-are reported below.
+Status as of 4 November 2026. The original six routes remain, and `/3d-printing` is now a seventh route
+with a downloadable model library. The 3 November results below are the baseline from before that work.
+The printable-model results are in the section added on 4 November. Only results that actually ran are
+reported.
 
 ## Delivered
 
@@ -76,6 +78,26 @@ downloads; component images and the lightbox.
       designer decision; the site intentionally does not resolve them. The demos label the one interpretation they
       must display (the Mountain road surcharge).
 - [ ] No store, price, release date, publisher or social links are shown, because none have been provided.
+
+## Printable models (4 November 2026)
+
+49 unique meshes. Each has an editable OpenSCAD source (`printables/cad/lib.scad`, `kit.scad`), an STL,
+and a 3MF. Player colour is filament, not a second file. Relief toppers are an alternative finish to the
+artwork toppers, not extra tiles.
+
+| Check | Result |
+| --- | --- |
+| Mesh validation | 49 passed, 0 failed. Watertight, consistent winding, one shell, positive volume, fits the 180 mm bed. Fit problems: none. |
+| 3MF | 49 core-spec files written by trimesh. Mesh geometry only. Not opened in Bambu Studio, and not Bambu Studio projects. |
+| Previews | OpenSCAD isometric and top renders, background keyed out. |
+| A4 PDFs | 8 sheets in `public/printables/cards/`: Steel fronts, backs, duplex, low-ink; player reference and low-ink; quick-start; hex insert template. Media box is A4. |
+| ZIP packs | 5 archives, CRC checked: base-and-terrain (28), roads-and-pipelines (8), buildings-and-markers (34), currency-and-tokens (36), complete-game (108 entries, 548,487 bytes). |
+| Vitest | `npx vitest run` — 7 files, **87 passed, 0 failed** |
+| Playwright | `$env:PW_CHANNEL='chrome'; npx playwright test` — **34 passed, 0 failed, 18 skipped**. `/3d-printing` rendered without console errors. No horizontal overflow at 375/768/1024/1440/1920. |
+| Production build | Playwright's web server runs `npm run build` (`tsc -b && vite build`) and the suite started, so that build succeeded. |
+| Browser | `/3d-printing` checked live: Standard 256 mm profile, Copper tint on the hex preview, Roads filter, relief checkbox revealing the City relief topper, mobile menu, homepage and print studio still rendering. STL, 3MF, duplex PDF and complete ZIP returned real bytes. |
+
+No physical test print was made. Clearances are the design values in `lib.scad`; the fit bar is how a printer checks them. Self-intersection was not exhaustively measured. The Tax Inspector is a block CAD figure with a separate bowler hat, not a sculpt. Bambu Studio was not available. Print time and filament weight were not estimated.
 
 ## Resuming work
 

@@ -14,6 +14,7 @@ runs in the browser, including map generation and PDF export.
 | `/map-generator` | Classic, Balanced Random (seeded) and Custom boards; editor, validation and balance score, undo/redo, drag-to-swap, save/load, share link, PNG/SVG/JSON/PDF export |
 | `/components` | Component catalogue with filters and a lightbox |
 | `/print-export` | Twelve printables (boards, tile backs, number tokens, Steel deck, reference cards, rulebook, quick start), each with a preview, Print and PDF |
+| `/3d-printing` | STL, 3MF and OpenSCAD downloads, print quantities, filament preview and A4 Steel Card sheets |
 
 ## Stack
 
@@ -38,6 +39,8 @@ npm run preview      # serve dist/
 | `npm run typecheck` | `tsc -b --noEmit` |
 | `npm run rules:md` | Regenerate `GAME_RULES_V1.md` from `src/data/` |
 | `npm run assets:optimize` | Rebuild `public/assets/` from `art-source/` (see `ASSET_MANIFEST.md`) |
+| `npm run printables:models` | Rebuild STL, 3MF, previews and zip packs with OpenSCAD |
+| `npm run printables:cards` | Rebuild the A4 Steel Card and reference PDFs |
 
 ### Playwright browsers
 
@@ -91,6 +94,7 @@ The approved Version 1 mechanics are frozen. All rule text on the site, in the P
 - [`GAME_RULES_V1.md`](GAME_RULES_V1.md): generated rules reference
 - [`ASSET_MANIFEST.md`](ASSET_MANIFEST.md): artwork provenance and processing
 - [`IMPLEMENTATION_REPORT.md`](IMPLEMENTATION_REPORT.md): what was built, test results and remaining tasks
+- [`PRINTING_GUIDE.md`](PRINTING_GUIDE.md), [`ASSEMBLY_GUIDE.md`](ASSEMBLY_GUIDE.md), [`MODEL_CATALOG.md`](MODEL_CATALOG.md), [`PRINT_VALIDATION_REPORT.md`](PRINT_VALIDATION_REPORT.md): the physical set
 
 ## License
 

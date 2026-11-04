@@ -13,6 +13,8 @@
     "test:e2e": "playwright test",
     "typecheck": "tsc -b --noEmit",
     "rules:md": "vitest run src/data/rulesMarkdown --mode write-rules",
+    "printables:models": "py -3 scripts/build-printables.py",
+    "printables:cards": "npx tsx scripts/build-cards.ts",
     "assets:optimize": "node scripts/optimize-assets.mjs"
   },
   "dependencies": {

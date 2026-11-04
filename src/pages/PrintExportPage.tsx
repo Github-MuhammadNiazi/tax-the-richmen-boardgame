@@ -1,5 +1,5 @@
 import { Download, Eye, Loader2, Map as MapIcon, Printer, X } from 'lucide-react';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import { screenImages } from '../components/board/TileArt';
 import { BoardSheet } from '../export/BoardSheet';
@@ -9,6 +9,7 @@ import { generateClassic } from '../map/classic';
 import type { BoardMap } from '../map/types';
 import { DocView } from '../print/DocView';
 import { inspectorDoc, oilBiddingDoc, playerReferenceDoc, portMarketDoc, quickStartDoc, roadPipelineDoc, rulebookDoc, type PrintDoc } from '../print/docs';
+import { BuildingCostPanel } from '../print/BuildingCostPanel';
 import { downloadDocPdf } from '../print/pdfDoc';
 import { printPages } from '../print/PrintHost';
 import { exportSheetPdf } from '../print/sheetExport';
@@ -304,7 +305,13 @@ export default function PrintExportPage() {
           Print &amp; Export
         </p>
         <h1 className="display-lg text-ivory">Bring it to the table.</h1>
-        <p className="lede mt-5">Twelve printables generated in your browser — boards, cut-out pieces, reference cards and the full rulebook. Nothing is uploaded anywhere.</p>
+        <p className="lede mt-5">
+          Twelve printables generated in your browser — boards, cut-out pieces, reference cards and the full rulebook. The four building-cost cards are fixed A4 sheets in that reference group. Nothing is uploaded anywhere. Ready-to-slice STL, 3MF and A4 Steel Card sheets are on the{' '}
+          <Link to="/3d-printing" className="text-brass hover:text-brass-light">
+            3D printing
+          </Link>{' '}
+          page.
+        </p>
       </header>
 
       <nav aria-label="Printables" className="mt-8 flex flex-wrap gap-2">
@@ -316,7 +323,8 @@ export default function PrintExportPage() {
       </nav>
 
       {GROUPS.map((g) => (
-        <section key={g.id} aria-labelledby={`group-${g.id}`} className="mt-14">
+        <Fragment key={g.id}>
+        <section aria-labelledby={`group-${g.id}`} className="mt-14">
           <div className="max-w-3xl">
             <h2 id={`group-${g.id}`} className="font-display text-2xl font-semibold tracking-[0.04em] text-ivory">
               {g.id}
@@ -331,6 +339,8 @@ export default function PrintExportPage() {
               ))}
           </div>
         </section>
+        {g.id === 'Reference cards' ? <BuildingCostPanel /> : null}
+        </Fragment>
       ))}
 
       <PreviewDialog p={preview} onClose={() => setPreview(null)} />

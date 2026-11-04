@@ -1,0 +1,323 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 3067
+>>
+stream
+0.5670000000000001 w
+0 G
+0.93 0.88 0.77 rg
+0. 841.8899999999999864 595.2755905511811534 -841.8897637795276978 re
+f
+BT
+/F10 18 Tf
+20.6999999999999993 TL
+0.165 0.125 0.094 rg
+45.354330708661422 785.1970866141732586 Td
+(Building cost cards) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 751.1813385826771992 Td
+(Print on A4 paper at Actual size, 100% scale. Do not use “fit to page”.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 727.3703149606299121 Td
+(Each card trims to 90 × 128 mm. The sheet has a 3 mm bleed and crop marks. Cut on the crop marks, not on the) Tj
+T* (outer edge of the colour.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 688.819133858267719 Td
+(The duplex file is two pages. Page 1 is the four fronts: Red \(circle\), Blue \(square\), Green \(triangle\), Gold) Tj
+T* (\(diamond\). Page 2 is the four backs, already mirrored left to right.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 650.2679527559055259 Td
+(For double-sided printing, flip on the long edge. After that flip, each coloured back should sit on the front with the) Tj
+T* (same name and symbol. This alignment has not been checked on a physical printer. Hold the sheet to a window) Tj
+T* (before you cut a whole set.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 596.9766141732283131 Td
+(Single-sided alternative: print the fronts file and the backs file on two sheets. Cut the eight cards apart and glue) Tj
+T* (each back to the front with the same player name and symbol. Do not glue the sheets corner to corner without) Tj
+T* (flipping them — the backs file is arranged for a long-edge flip, so an unflipped stack pairs Red with Blue.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 543.6852755905511003 Td
+(A short alignment test: print only the duplex file’s first page, draw a pencil cross in the margin, flip the paper on) Tj
+T* (the long edge, and print page 2. The crop marks should meet. If your printer shifts them, use the single-sided) Tj
+T* (method.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 490.3939370078740012 Td
+(Cardstock around 250–300 gsm is a practical choice for a hand of cards. That weight is a suggestion, not a tested) Tj
+T* (specification. The low-ink file is the same duplex pair without the parchment fill.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 451.8427559055117513 Td
+(Every card carries the same costs, read from the Version 1 rules. Lines that begin with “Open” are playtest) Tj
+T* (questions. They are not answers.) Tj
+ET
+BT
+/F9 11 Tf
+12.6499999999999986 TL
+0.165 0.125 0.094 rg
+45.354330708661422 413.2915748031495582 Td
+(These sheets do not replace the Steel Cards or the other reference sheets.) Tj
+ET
+BT
+/F11 10 Tf
+11.5 TL
+0.165 0.125 0.094 rg
+45.354330708661422 48.1892125984251152 Td
+(No physical paper test was made for this file.) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 4.2.1)
+/CreationDate (D:20261104152228+05'00')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000003271 00000 n 
+0000005088 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000003328 00000 n 
+0000003453 00000 n 
+0000003583 00000 n 
+0000003716 00000 n 
+0000003853 00000 n 
+0000003976 00000 n 
+0000004105 00000 n 
+0000004237 00000 n 
+0000004373 00000 n 
+0000004501 00000 n 
+0000004628 00000 n 
+0000004757 00000 n 
+0000004890 00000 n 
+0000004992 00000 n 
+0000005336 00000 n 
+0000005422 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <AEA1D5AC4E42FBF47E971815C53D59FB> <AEA1D5AC4E42FBF47E971815C53D59FB> ]
+>>
+startxref
+5526
+%%EOF

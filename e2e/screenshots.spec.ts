@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 
 /** Visual QA capture, opt-in: QA_SCREENS=1 npx playwright test screenshots --project=desktop */
-const ROUTES = ['/', '/how-to-play', '/rulebook', '/map-generator', '/components', '/print-export'];
+const ROUTES = ['/', '/how-to-play', '/rulebook', '/map-generator', '/components', '/print-export', '/3d-printing'];
 const WIDTHS = [375, 768, 1024, 1440, 1920];
 
 test.skip(!process.env.QA_SCREENS, 'set QA_SCREENS=1 to capture screenshots');
