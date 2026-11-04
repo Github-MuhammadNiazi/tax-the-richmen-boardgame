@@ -216,6 +216,7 @@ describe('3D printing library', () => {
     expect(screen.queryByRole('heading', { name: 'City relief topper' })).not.toBeInTheDocument();
     await user.click(screen.getByRole('checkbox'));
     expect(screen.getByRole('heading', { name: 'City relief topper' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Building cost cards, duplex' })).toHaveAttribute('href', '/printables/cards/building-cost-cards-a4-duplex.pdf');
     await user.click(screen.getByRole('radio', { name: 'Roads' }));
     expect(screen.getByRole('heading', { name: 'Road segment' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Universal hex base' })).not.toBeInTheDocument();
@@ -233,6 +234,7 @@ describe('print & export hub', () => {
       expect(within(card as HTMLElement).getByRole('button', { name: /PDF/ })).toBeInTheDocument();
     }
     expect(document.getElementById('rulebook-pdf')).not.toBeNull();
+    expect(screen.getByRole('link', { name: 'Building cost cards, duplex' })).toHaveAttribute('href', '/printables/cards/building-cost-cards-a4-duplex.pdf');
     await user.click(screen.getByRole('button', { name: 'Preview Quick-start guide' }));
     expect(await screen.findByRole('dialog', { name: 'Quick-start guide preview' })).toBeInTheDocument();
   });

@@ -1,5 +1,6 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { jsPDF } from 'jspdf';
+import { writeBuildingCostCards } from './building-cost-pdf.ts';
 import { quickStartLines, referenceCards, steelCardValues } from '../src/print/tableCards.ts';
 
 const OUT = 'public/printables/cards';
@@ -253,6 +254,7 @@ function hexTemplate() {
   writeFileSync(`${OUT}/hex-insert-template.pdf`, Buffer.from(pdf.output('arraybuffer')));
 }
 
+writeBuildingCostCards();
 steelPdf('fronts');
 steelPdf('backs');
 steelPdf('duplex');

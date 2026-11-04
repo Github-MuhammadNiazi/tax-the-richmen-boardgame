@@ -86,7 +86,7 @@ Not photographs and not pictures of models. `printables/cad/` is the OpenSCAD so
 | Geometry-derived previews | `public/printables/renders/` |
 | OpenSCAD source served to the browser | `public/printables/cad/` |
 | Zip packs | `public/printables/bundles/` |
-| A4 Steel Cards, reference cards, hex-insert template | `public/printables/cards/` |
+| A4 Steel Cards, building-cost cards, reference cards, hex-insert template | `public/printables/cards/` |
 
 The 3MF files are core-spec meshes, not Bambu Studio projects. The previews are shaded views of those meshes. The Inspector is a CAD construction, not a sculpt. See `PRINT_VALIDATION_REPORT.md`.
 

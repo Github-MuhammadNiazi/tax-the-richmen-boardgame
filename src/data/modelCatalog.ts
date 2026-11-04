@@ -621,6 +621,11 @@ export const BUNDLE_LINKS = [
 ];
 
 export const CARD_FILES = [
+  { file: '/printables/cards/building-cost-cards-a4-duplex.pdf', name: 'Building cost cards, duplex', note: 'Four 90 × 128 mm cards. Backs are mirrored for a long-edge flip.' },
+  { file: '/printables/cards/building-cost-cards-a4-fronts.pdf', name: 'Building cost card fronts', note: 'Fronts only, with crop marks and 3 mm bleed.' },
+  { file: '/printables/cards/building-cost-cards-a4-backs.pdf', name: 'Building cost card backs', note: 'Backs mirrored to match the fronts on a long-edge flip.' },
+  { file: '/printables/cards/building-cost-cards-a4-low-ink.pdf', name: 'Building cost cards, low ink', note: 'The duplex pair without filled parchment.' },
+  { file: '/printables/cards/building-cost-cards-printing-guide.pdf', name: 'Building cost card printing guide', note: 'A4, 100% scale, long-edge duplex, and a single-sided alternative.' },
   { file: '/printables/cards/steel-cards-duplex.pdf', name: 'Steel Cards, duplex', note: `${STEEL_DECK_SIZE} cards. Backs are mirrored for a long-edge flip.` },
   { file: '/printables/cards/steel-cards-fronts.pdf', name: 'Steel Card fronts', note: 'Fronts only, with crop marks.' },
   { file: '/printables/cards/steel-cards-backs.pdf', name: 'Steel Card backs', note: 'Identical backs, columns mirrored.' },

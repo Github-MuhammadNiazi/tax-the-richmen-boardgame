@@ -15,6 +15,7 @@ import {
   type PrintCategory,
 } from '../data/modelCatalog';
 import { usePageMeta } from '../lib/usePageMeta';
+import { BuildingCostPanel } from '../print/BuildingCostPanel';
 
 const SWATCHES = [...FILAMENTS, ...PLAYER_FILAMENTS];
 
@@ -275,10 +276,11 @@ export default function Print3dPage() {
           A4 cards
         </h2>
         <p className="mt-4 max-w-3xl text-sm text-muted">
-          Steel Cards are 60 × 85 mm, a prototype size. Print at 100% scale and cut on the crop marks. For duplex, flip on the long edge: the back sheet is already mirrored so the fronts and backs meet. Nothing on these cards answers an open playtest question.
+          Steel Cards are 60 × 85 mm, a prototype size. The building-cost cards are a separate 90 × 128 mm set. Print at 100% scale and cut on the crop marks. For duplex, flip on the long edge: the back sheet is already mirrored so the fronts and backs meet. Open questions are labelled and are not given an answer.
         </p>
+        <BuildingCostPanel />
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-          {CARD_FILES.map((c) => (
+          {CARD_FILES.filter((c) => !c.file.includes('building-cost')).map((c) => (
             <li key={c.file} className="rounded-sm border border-rivet p-4">
               <a className="font-display text-ivory hover:text-brass" href={c.file} download>
                 {c.name}
