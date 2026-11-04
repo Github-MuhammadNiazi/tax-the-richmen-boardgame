@@ -5,4 +5,5 @@ export const NAV_LINKS = [
   { to: '/map-generator', label: 'Map Generator' },
   { to: '/components', label: 'Components' },
   { to: '/print-export', label: 'Print & Export' },
+  { to: '/3d-printing', label: '3D Printing' },
 ] as const;

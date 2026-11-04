@@ -114,7 +114,11 @@ export default function ComponentsPage() {
         </p>
         <h1 className="display-lg text-ivory">Built to be held.</h1>
         <p className="lede mt-5">
-          Sculpted miniatures, embossed coins and engraved certificates. The images are concept renders of the prototype set; dimensions, where given, are proposals rather than final specifications.
+          Sculpted miniatures, embossed coins and engraved certificates. The images are concept renders of the prototype set; dimensions, where given, are proposals rather than final specifications. Printable STL and 3MF files are on the{' '}
+          <Link to="/3d-printing" className="text-brass hover:text-brass-light">
+            3D printing
+          </Link>{' '}
+          page.
         </p>
       </header>
 

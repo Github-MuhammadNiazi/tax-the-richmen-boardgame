@@ -62,7 +62,7 @@ export function Header() {
                     to={l.to}
                     end={l.to === '/'}
                     className={({ isActive }) =>
-                      `relative whitespace-nowrap px-3 py-2 font-display text-[0.78rem] font-semibold tracking-[0.14em] uppercase transition-colors ${
+                      `relative whitespace-nowrap px-2 py-2 font-display text-[0.72rem] font-semibold tracking-[0.1em] uppercase transition-colors ${
                         isActive ? 'text-brass' : 'text-ivory/80 hover:text-ivory'
                       }`
                     }
@@ -72,7 +72,7 @@ export function Header() {
                         {l.label}
                         <span
                           aria-hidden
-                          className={`absolute inset-x-3 -bottom-0.5 h-px bg-brass transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}
+                          className={`absolute inset-x-2 -bottom-0.5 h-px bg-brass transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}
                         />
                       </>
                     )}

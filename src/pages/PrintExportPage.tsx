@@ -304,7 +304,13 @@ export default function PrintExportPage() {
           Print &amp; Export
         </p>
         <h1 className="display-lg text-ivory">Bring it to the table.</h1>
-        <p className="lede mt-5">Twelve printables generated in your browser — boards, cut-out pieces, reference cards and the full rulebook. Nothing is uploaded anywhere.</p>
+        <p className="lede mt-5">
+          Twelve printables generated in your browser — boards, cut-out pieces, reference cards and the full rulebook. Nothing is uploaded anywhere. Ready-to-slice STL, 3MF and A4 Steel Card sheets are on the{' '}
+          <Link to="/3d-printing" className="text-brass hover:text-brass-light">
+            3D printing
+          </Link>{' '}
+          page.
+        </p>
       </header>
 
       <nav aria-label="Printables" className="mt-8 flex flex-wrap gap-2">

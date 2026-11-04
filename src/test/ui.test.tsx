@@ -41,6 +41,7 @@ describe('site navigation', () => {
       ['Map Generator', /every map tells/i],
       ['Components', /built to be held/i],
       ['Print & Export', /bring it to the table/i],
+      ['3D Printing', /print the pieces/i],
     ];
     for (const [link, heading] of routes) {
       await user.click(within(primary).getByRole('link', { name: link }));
@@ -198,6 +199,26 @@ describe('components page', () => {
     expect(within(dialog).getByRole('img')).toHaveAttribute('alt', expect.stringMatching(/steel/i));
     await user.click(within(dialog).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(screen.queryByRole('dialog', { name: 'Steel Cards' })).not.toBeInTheDocument());
+  });
+});
+
+describe('3D printing library', () => {
+  it('filters parts, previews a filament and links real downloads', async () => {
+    const { user } = renderApp('/3d-printing');
+    expect(await screen.findByRole('heading', { level: 1, name: /print the pieces/i })).toBeInTheDocument();
+    await user.click(screen.getByRole('radio', { name: 'Standard 256 mm' }));
+    expect(screen.getByText(/256 × 256 mm/)).toBeInTheDocument();
+    await user.click(screen.getByRole('radio', { name: 'Copper' }));
+    expect(screen.getByText(/Previewing Copper/)).toBeInTheDocument();
+    const base = document.getElementById('hex_base') as HTMLElement;
+    expect(within(base).getByRole('link', { name: 'STL' })).toHaveAttribute('href', '/printables/models/hex_base.stl');
+    expect(within(base).getByRole('link', { name: '3MF' })).toHaveAttribute('href', '/printables/models/hex_base.3mf');
+    expect(screen.queryByRole('heading', { name: 'City relief topper' })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('checkbox'));
+    expect(screen.getByRole('heading', { name: 'City relief topper' })).toBeInTheDocument();
+    await user.click(screen.getByRole('radio', { name: 'Roads' }));
+    expect(screen.getByRole('heading', { name: 'Road segment' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Universal hex base' })).not.toBeInTheDocument();
   });
 });
 

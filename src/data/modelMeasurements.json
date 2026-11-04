@@ -1,0 +1,545 @@
+{
+  "generatedAt": "2026-11-04T09:24:21Z",
+  "openscad": "OpenSCAD version 2021.01",
+  "models": {
+    "hex_base": {
+      "extents": [
+        80.83,
+        70.0,
+        4.0
+      ],
+      "volume": 16637.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_artwork": {
+      "extents": [
+        76.21,
+        66.0,
+        4.6
+      ],
+      "volume": 7144.6,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_city": {
+      "extents": [
+        76.21,
+        66.0,
+        6.95
+      ],
+      "volume": 8614.7,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_village": {
+      "extents": [
+        76.21,
+        66.0,
+        8.05
+      ],
+      "volume": 8520.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_mine": {
+      "extents": [
+        76.21,
+        66.0,
+        6.75
+      ],
+      "volume": 8466.8,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_port": {
+      "extents": [
+        76.21,
+        66.0,
+        6.55
+      ],
+      "volume": 8393.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_oil": {
+      "extents": [
+        76.21,
+        66.0,
+        8.05
+      ],
+      "volume": 8379.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_mountain": {
+      "extents": [
+        76.21,
+        66.0,
+        7.15
+      ],
+      "volume": 8403.5,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_water": {
+      "extents": [
+        76.21,
+        66.0,
+        5.0
+      ],
+      "volume": 8303.5,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "topper_tax": {
+      "extents": [
+        76.21,
+        66.0,
+        8.3
+      ],
+      "volume": 8635.8,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "hidden_cover": {
+      "extents": [
+        80.02,
+        69.3,
+        7.93
+      ],
+      "volume": 7592.7,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "hex_clip": {
+      "extents": [
+        8.2,
+        6.0,
+        1.35
+      ],
+      "volume": 66.4,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "fit_calibration": {
+      "extents": [
+        92.0,
+        20.0,
+        8.28
+      ],
+      "volume": 7820.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "road_segment": {
+      "extents": [
+        44.0,
+        9.0,
+        3.45
+      ],
+      "volume": 995.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "pipeline_straight": {
+      "extents": [
+        44.0,
+        8.0,
+        6.7
+      ],
+      "volume": 1395.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "pipeline_coupling": {
+      "extents": [
+        16.0,
+        8.4,
+        7.95
+      ],
+      "volume": 550.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "establishment": {
+      "extents": [
+        12.0,
+        9.2,
+        7.3
+      ],
+      "volume": 426.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "office": {
+      "extents": [
+        11.0,
+        9.0,
+        13.8
+      ],
+      "volume": 887.5,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "flag": {
+      "extents": [
+        10.5,
+        3.2,
+        15.0
+      ],
+      "volume": 146.1,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "flag_ship": {
+      "extents": [
+        14.3,
+        3.2,
+        19.0
+      ],
+      "volume": 225.5,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "steel_vault": {
+      "extents": [
+        20.0,
+        16.0,
+        14.6
+      ],
+      "volume": 4229.8,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_3": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 297.5,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_4": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 297.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_5": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 298.1,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_6": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 298.4,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_8": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 299.1,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_9": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 298.6,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_10": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 299.9,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "number_chip_11": {
+      "extents": [
+        13.2,
+        13.2,
+        2.68
+      ],
+      "volume": 298.6,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "steel_coin": {
+      "extents": [
+        18.0,
+        18.0,
+        2.25
+      ],
+      "volume": 471.4,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "market_wood": {
+      "extents": [
+        12.0,
+        10.0,
+        7.95
+      ],
+      "volume": 498.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "market_metal": {
+      "extents": [
+        12.0,
+        10.0,
+        9.8
+      ],
+      "volume": 417.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "market_fuel": {
+      "extents": [
+        12.0,
+        10.0,
+        8.0
+      ],
+      "volume": 329.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "market_stone": {
+      "extents": [
+        12.0,
+        10.0,
+        4.8
+      ],
+      "volume": 351.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "lease_token": {
+      "extents": [
+        20.0,
+        14.0,
+        6.45
+      ],
+      "volume": 496.4,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "bid_marker": {
+      "extents": [
+        24.0,
+        16.0,
+        3.05
+      ],
+      "volume": 774.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "tax_inspector": {
+      "extents": [
+        18.0,
+        18.0,
+        29.9
+      ],
+      "volume": 1513.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "inspector_hat": {
+      "extents": [
+        13.4,
+        13.4,
+        8.62
+      ],
+      "volume": 414.6,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "inspector_ring": {
+      "extents": [
+        19.0,
+        19.0,
+        2.0
+      ],
+      "volume": 279.9,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "upgrade_token": {
+      "extents": [
+        16.0,
+        16.0,
+        2.0
+      ],
+      "volume": 318.3,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "winning_ship": {
+      "extents": [
+        36.2,
+        10.0,
+        9.4
+      ],
+      "volume": 1413.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "resource_money": {
+      "extents": [
+        15.0,
+        15.0,
+        2.05
+      ],
+      "volume": 329.1,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "resource_wood": {
+      "extents": [
+        16.0,
+        8.3,
+        3.8
+      ],
+      "volume": 431.9,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "resource_metal": {
+      "extents": [
+        15.0,
+        6.4,
+        3.2
+      ],
+      "volume": 277.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "resource_fuel": {
+      "extents": [
+        8.8,
+        8.8,
+        12.8
+      ],
+      "volume": 623.8,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "resource_stone": {
+      "extents": [
+        12.0,
+        10.0,
+        8.0
+      ],
+      "volume": 946.0,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "dice": {
+      "extents": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "volume": 4047.8,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "card_holder": {
+      "extents": [
+        68.0,
+        20.0,
+        18.0
+      ],
+      "volume": 14549.2,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    },
+    "token_tray": {
+      "extents": [
+        96.0,
+        28.0,
+        10.0
+      ],
+      "volume": 12105.6,
+      "watertight": true,
+      "bodies": 1,
+      "ok": true
+    }
+  }
+}
