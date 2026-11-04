@@ -12,7 +12,7 @@ export function BuildingCostPanel() {
           Building cost cards
         </h2>
         <p className="mt-2 text-sm text-muted">
-          Four double-sided cards, {CARD_TRIM.w} × {CARD_TRIM.h} mm after trimming. The costs are the same on every card. Colour and symbol mark the player. Lines that begin with “Open” are unresolved rules, not answers.
+          Four double-sided cards, {CARD_TRIM.w} × {CARD_TRIM.h} mm after trimming. The pictures are the costs. Colour and symbol mark the player. Unresolved rules stay in the rulebook.
         </p>
       </div>
       <div className="mt-6 grid gap-4 lg:grid-cols-2">

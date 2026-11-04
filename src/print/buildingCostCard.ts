@@ -1,12 +1,23 @@
 import { COSTS, LIMITS, addCosts, costEntries, formatCost, type Cost } from '../data/costs';
-import { PLAYERS, type PlayerDef } from '../data/players';
+import { PLAYERS, type PlayerColor, type PlayerDef } from '../data/players';
 import type { CostKey } from '../data/resources';
 
 /** Trimmed playing-card size. Bleed sits outside this rectangle and is cut away. */
 export const CARD_TRIM = { w: 90, h: 128 } as const;
 export const CARD_BLEED = 3;
-export const CARD_BODY_PT = 8.5;
+export const CARD_BODY_PT = 9;
 export const SHEET = { w: 210, h: 297, gap: 8 } as const;
+
+/** Print accents. Colour is a border and a badge, never a filled background. */
+export const CARD_ACCENT: Record<PlayerColor, string> = {
+  red: '#6E2A33',
+  blue: '#1C3A56',
+  green: '#1E4630',
+  gold: '#8A6424',
+};
+
+export const FRONT_TITLE = 'BUILDING COSTS';
+export const BACK_TITLE = 'CONSTRUCTION & PLACEMENT';
 
 export const BUILDING_COST_FILES = [
   {
@@ -82,6 +93,11 @@ export function chipsOf(cost: Cost): CostChip[] {
   return costEntries(cost).map(([key, n]) => ({ key, n }));
 }
 
+/** What the card draws. Actions are a footer, not an icon on every row. */
+export function picturedCost(cost: Cost): CostChip[] {
+  return costEntries(cost, { includeAction: false }).map(([key, n]) => ({ key, n }));
+}
+
 export interface CostRow {
   label: string;
   cost: Cost;
@@ -100,142 +116,88 @@ export function propertyRows(): CostRow[] {
 export function constructionRows(): CostRow[] {
   return [
     { label: 'Road', cost: COSTS.road },
-    {
-      label: 'Entering a Mountain',
-      cost: addCosts(COSTS.road, COSTS.roadMountainSurcharge),
-      note: 'Open: a Road leaving a Mountain may also cost the Stone.',
-    },
-    { label: 'Pipeline segment', cost: COSTS.pipeline },
+    { label: 'Mountain entry', cost: addCosts(COSTS.road, COSTS.roadMountainSurcharge) },
+    { label: 'Pipeline', cost: COSTS.pipeline },
     { label: 'Office', cost: COSTS.office },
-    { label: 'Toll access', cost: COSTS.toll },
-    {
-      label: 'Property upgrade',
-      cost: COSTS.upgrade,
-      note: 'One per player. Open: which properties qualify.',
-    },
-    {
-      label: 'Steel Vault',
-      cost: COSTS.steelVault,
-      note: 'One active Vault, after the Port is activated.',
-    },
+    { label: 'Toll', cost: COSTS.toll },
+  ];
+}
+
+export function improvementRows(): CostRow[] {
+  return [
+    { label: 'Upgrade', cost: COSTS.upgrade },
+    { label: 'Steel Vault', cost: COSTS.steelVault },
   ];
 }
 
 export function marketRows(): CostRow[] {
   return [
-    { label: 'Wood Market', cost: COSTS.marketWood },
-    { label: 'Metal Market', cost: COSTS.marketMetal },
-    { label: 'Fuel Market', cost: COSTS.marketFuel },
-    { label: 'Stone Market', cost: COSTS.marketStone },
+    { label: 'Wood', cost: COSTS.marketWood },
+    { label: 'Metal', cost: COSTS.marketMetal },
+    { label: 'Fuel', cost: COSTS.marketFuel },
+    { label: 'Stone', cost: COSTS.marketStone },
   ];
 }
 
-/** Sentences printed on the front, in order. Costs stay in the chip rows. */
-export function frontNotes(): string[] {
+/** Short marks that are printed. Unresolved rules stay in the rulebook. */
+export function cardMarks() {
+  const toll = formatCost(COSTS.toll, { includeAction: false });
+  return {
+    pipeline: 'each',
+    bid: 'min',
+    raise: `+${LIMITS.oilBidIncrement}`,
+    steel: 'Trade',
+    steelNote: 'Port Market',
+    footer: 'Construction & investments: 1 action',
+    backFooter: `${LIMITS.actionsPerTurn} actions each turn. See the rulebook.`,
+    tollPay: `Pay ${toll} for permanent access.`,
+  };
+}
+
+export function backCards(): { title: string; lines: string[] }[] {
+  const marks = cardMarks();
   return [
-    'Starting City and Port: free during setup.',
-    'Open: a second City is not decided.',
-    'A Rig is leased. Water and the Tax Office are not for sale.',
-    'Establishment marks paid ownership. No separate cost.',
-    `Opening bid ${formatCost(COSTS.oilBidMinimum)}. Each later bid is at least ${LIMITS.oilBidIncrement} Money above the highest bid.`,
-    'Bid money is paid at once and is not refunded.',
-    'Open: whether a lease or a bid needs Road access.',
-    `Steel exchange: ${chipsOf(COSTS.steelPurchase)
-      .map((c) => `${c.n} ${c.key}`)
-      .join(' + ')} = 1 Steel.`,
-    'Requires a constructed Port Market and an activated Port. It is a trading-phase exchange, not an action.',
-    `Every other cost on this card takes 1 of the turn’s ${LIMITS.actionsPerTurn} actions.`,
+    { title: 'ROADS', lines: ['Connect adjacent hex centers.', 'Not on water or the Tax Office.'] },
+    { title: 'MOUNTAINS', lines: ['Extra Stone to enter.'] },
+    {
+      title: 'OFFICES',
+      lines: ['Foothold on a rival hex.', `Max ${LIMITS.officesPerPlayer} per player / ${LIMITS.officesPerHex} per hex.`],
+    },
+    { title: 'TOLLS', lines: [marks.tollPay, 'No consecutive tolls.'] },
+    { title: 'PIPELINES', lines: ['Connect 2 owned hexes', 'through an Oil Rig.', 'Fuel, not a victory road.'] },
+    { title: 'INSPECTOR', lines: ['No new construction or purchases.', 'Existing Roads remain usable.'] },
+    { title: 'ACCESS', lines: ['Owners retain access', 'in and out.'] },
+    { title: 'OFFICE SITES', lines: ['Allowed', 'Not allowed'] },
   ];
 }
 
-export function backSections(): { title: string; lines: string[] }[] {
-  return [
-    {
-      title: 'Roads',
-      lines: [
-        'Centres of adjacent hexes.',
-        'One Road per connection.',
-        'A Road is not ownership.',
-        'No Water or Tax Office.',
-        'Entering a Mountain: +1 Stone.',
-        'Open: leaving may also pay.',
-      ],
-    },
-    {
-      title: 'Owner priority',
-      lines: [
-        'Keep a way in and a way out.',
-        'No one may close every exit.',
-        'No edge is reserved in advance.',
-      ],
-    },
-    {
-      title: 'Tolls',
-      lines: [
-        `${formatCost(COSTS.toll)}. Permanent.`,
-        'The builder still owns it.',
-        `Normally ${LIMITS.tollBaseAllowance}. Third after ${LIMITS.tollThirdUnlockPaidRoads}.`,
-        `Lifetime maximum ${LIMITS.tollMaxLifetime}.`,
-        'No two tolls in a row.',
-        'Your Road sits between them.',
-      ],
-    },
-    {
-      title: 'Offices',
-      lines: [
-        'Expand through a rival’s hex.',
-        `${LIMITS.officesPerPlayer} per player. ${LIMITS.officesPerHex} per hex.`,
-        'Only one of yours on a hex.',
-        'City, Village, Mine, Mountain.',
-        'No Port, Rig, Water or Tax.',
-        'Not ownership. No production.',
-      ],
-    },
-    {
-      title: 'Pipelines',
-      lines: [
-        'Two owned hexes via a Rig.',
-        'Pay the cost on each segment.',
-        'A Pipeline cannot buy property.',
-        'Not a City-to-Port Road.',
-        'Fuel on that Rig’s roll.',
-        'Owner and lessee both collect.',
-        'Open: its path is not decided.',
-      ],
-    },
-    {
-      title: 'Tax Inspector',
-      lines: [
-        'No new Road in or out.',
-        'No purchase and no new Office.',
-        'Existing Roads stay usable.',
-        'Rig Fuel stops. Lease stays.',
-      ],
-    },
-    {
-      title: 'Hidden terrain',
-      lines: [
-        'Mines and Mountains stay hidden.',
-        'Open: nothing states when a tile is revealed.',
-      ],
-    },
-    {
-      title: 'Actions',
-      lines: [`${LIMITS.actionsPerTurn} actions on a normal turn.`],
-    },
-  ];
-}
+export const OFFICE_ALLOWED = ['City', 'Village', 'Mine', 'Mountain'] as const;
+export const OFFICE_BARRED = ['Port', 'Rig', 'Water', 'Tax'] as const;
 
-/** Every string the cards print, for tests. Chip amounts are included as words. */
+/** Every string the cards print. Amounts are the pictured resources, without an action chip. */
 export function buildingCostPlainText(): string {
-  const chipText = (rows: CostRow[]) => rows.map((row) => `${row.label} ${costEntries(row.cost).map(([k, n]) => `${n} ${k}`).join(' ')} ${row.note ?? ''}`).join('\n');
+  const chipText = (rows: CostRow[]) =>
+    rows.map((row) => `${row.label} ${picturedCost(row.cost).map((chip) => `${chip.n} ${chip.key}`).join(' ')}`).join('\n');
+  const marks = cardMarks();
+  const steel = picturedCost(COSTS.steelPurchase)
+    .map((chip) => `${chip.n} ${chip.key}`)
+    .join(' ');
   return [
-    ...PLAYERS.map((p) => `${p.label} ${p.symbol}`),
+    FRONT_TITLE,
+    BACK_TITLE,
+    ...PLAYERS.map((player) => `${player.label} ${player.symbol}`),
     chipText(propertyRows()),
     chipText(constructionRows()),
+    chipText(improvementRows()),
     chipText(marketRows()),
-    ...frontNotes(),
-    ...backSections().flatMap((section) => [section.title, ...section.lines]),
-    `Lease ${costEntries(COSTS.oilLease).map(([k, n]) => `${n} ${k}`).join(' ')}`,
+    `Lease ${picturedCost(COSTS.oilLease).map((chip) => `${chip.n} ${chip.key}`).join(' ')}`,
+    `Bid ${picturedCost(COSTS.oilBidMinimum).map((chip) => `${chip.n} ${chip.key}`).join(' ')} ${marks.bid} ${marks.raise}`,
+    `Steel ${steel} = 1 steel ${marks.steel} ${marks.steelNote}`,
+    marks.pipeline,
+    marks.footer,
+    ...backCards().flatMap((card) => [card.title, ...card.lines]),
+    ...OFFICE_ALLOWED,
+    ...OFFICE_BARRED,
+    marks.backFooter,
   ].join('\n');
 }
