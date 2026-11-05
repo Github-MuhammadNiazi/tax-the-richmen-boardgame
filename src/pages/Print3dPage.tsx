@@ -276,7 +276,7 @@ export default function Print3dPage() {
           A4 cards
         </h2>
         <p className="mt-4 max-w-3xl text-sm text-muted">
-          Steel Cards are 60 × 85 mm, a prototype size. The building-cost cards are a separate 90 × 128 mm set. Print at 100% scale and cut on the crop marks. For duplex, flip on the long edge: the back sheet is already mirrored so the fronts and backs meet. Open questions are labelled and are not given an answer.
+          Steel Cards are 60 × 85 mm, a prototype size. The building-cost cards are a separate 90 × 128 mm set. Print at 100% scale and cut on the crop marks. For duplex, flip on the long edge: the back sheet is already mirrored so the fronts and backs meet. Unresolved rules stay in the rulebook, not on these cards.
         </p>
         <BuildingCostPanel />
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">

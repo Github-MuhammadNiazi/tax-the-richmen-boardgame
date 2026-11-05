@@ -13,6 +13,7 @@ import {
   buildingCostPlainText,
   chipsOf,
   frontSlots,
+  picturedCost,
   sheetOrigin,
 } from './buildingCostCard';
 
@@ -45,19 +46,20 @@ describe('building cost cards', () => {
     expect(new Set(PLAYERS.map((player) => player.symbol)).size).toBe(4);
   });
 
-  it('reads approved costs and labels open questions instead of deciding them', () => {
+  it('reads approved costs and keeps unresolved rules off the card', () => {
     const text = buildingCostPlainText();
     expect(text).toContain('City 4 money');
     expect(text).toContain('Village 2 money');
     expect(text).toContain('Mine 3 money');
     expect(text).toContain('Mountain 2 money');
+    expect(text).toContain('Mountain entry 1 wood 1 metal 1 fuel 1 stone');
+    expect(text).toContain('Steel 2 metal 1 fuel = 1 steel');
+    expect(text).toContain('Construction & investments: 1 action');
+    expect(picturedCost(COSTS.road).some((chip) => chip.key === 'action')).toBe(false);
+    expect(picturedCost(COSTS.steelPurchase).some((chip) => chip.key === 'action')).toBe(false);
     expect(chipsOf(COSTS.road)).toEqual(costEntries(COSTS.road).map(([key, n]) => ({ key, n })));
     expect(chipsOf(COSTS.pipeline).map((chip) => chip.key)).toEqual(['metal', 'fuel', 'action']);
-    expect(chipsOf(COSTS.steelPurchase).some((chip) => chip.key === 'action')).toBe(false);
-    expect(text).toContain('Open: a second City is not decided.');
-    expect(text).toContain('Open: leaving may also pay.');
-    expect(text).toContain('Open: its path is not decided.');
-    expect(text).toContain('Open: nothing states when a tile is revealed.');
+    expect(text).not.toMatch(/Open:/);
     expect(text).not.toMatch(/before construction|reveal occurs before/i);
   });
 
@@ -80,6 +82,7 @@ describe('building cost cards', () => {
       if (name !== 'building-cost-cards-printing-guide.pdf') {
         if (name !== 'building-cost-cards-a4-backs.pdf') expect(text).toContain('BUILDING COSTS');
         if (name !== 'building-cost-cards-a4-fronts.pdf') expect(text).toContain('CONSTRUCTION');
+        expect(text).not.toContain('Open:');
         expect(text).toContain('RED');
         expect(text).toContain('BLUE');
         expect(text).toContain('GREEN');
